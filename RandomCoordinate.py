@@ -3,6 +3,7 @@ import random
 from geopy.geocoders import Nominatim
 
 # add as you need
+# format: N, S, W, E
 boundaries = {
     'World': [90,-90,-180,180],
     'China': [53.6,18.1,73.5,135.1],
@@ -32,7 +33,7 @@ def generate_location(place, land_only=True, in_region_only=True, language="en",
         # Ensures uniform distribution over the Earth's surface
         latitutde = math.asin(
             math.sin(b) + random.random()*(math.sin(a)-math.sin(b))
-        ) / math.pi*180
+        ) / DEG_TO_RAD
         
         longitude_direction = "E" if longitude >= 0 else "W"
         latitutde_direction = "N" if latitutde >= 0 else "S"
